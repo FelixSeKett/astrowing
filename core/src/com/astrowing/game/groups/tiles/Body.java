@@ -24,25 +24,9 @@ public class Body extends Tile
     // METHODS
     // =====================================================
 
-    //    public boolean moveToArea(Area areaToMoveTo)
-    //    {
-    //        if (areaToMoveTo != null) {
-    //            if (!areaToMoveTo.isBlocked()) {
-    //                takeArea(areaToMoveTo);
-    //                return true;
-    //            }
-    //        }
-    //        return false;
-    //    }
-
     protected void takeArea(Area areaToTake)
     {
         areaToTake.addActor(this);
         area = areaToTake;
-    }
-
-    public Area giveArea()
-    {
-        return area;
     }
 }
