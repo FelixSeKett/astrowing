@@ -1,31 +1,32 @@
 package com.astrowing.game.groups;
 
 import com.astrowing.game.Map;
+import com.astrowing.game.groups.tiles.bodies.ships.Arwing;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.astrowing.game.Direction;
 import com.astrowing.game.GameScreen;
 import com.astrowing.game.groups.tiles.Area;
-import com.astrowing.game.groups.tiles.bodies.Ship;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class World<S extends Ship> extends Group
+public class World extends Group
 {
     // =====================================================
     // FIELDS
     // =====================================================
 
-    public static final  Texture          TEXTURE         = new Texture("core/assets/map.png");
-    private static final int              WIDTH_IN_TILES  = 8;
-    private static final int              HEIGHT_IN_TILES = 8;
-    public final         GameScreen<?, ?> GAME_SCREEN;
-    protected final      Area[][]         AREAS;
-    protected final      S                SHIP;
+    public static final  Texture    TEXTURE         = new Texture("core/assets/map.png");
+    private static final int        WIDTH_IN_TILES  = 8;
+    private static final int        HEIGHT_IN_TILES = 8;
+    private final        GameScreen GAME_SCREEN;
+    private final        Area[][]   AREAS;
+    private final        Arwing     ARWING;
 
     // =====================================================
     // CONSTRUCTORS
     // =====================================================
 
-    public World(GameScreen<?, ?> gameScreen, Map map)
+    public World(GameScreen gameScreen, Map map, Stage stage)
     {
         GAME_SCREEN = gameScreen;
         AREAS       = new Area[WIDTH_IN_TILES][HEIGHT_IN_TILES];
@@ -36,8 +37,9 @@ public class World<S extends Ship> extends Group
                 addActor(area);
             }
         }
-        SHIP = createShip();
+        ARWING = new Arwing(AREAS[3][3]);
         map.createAsteroids(AREAS);
+        stage.setKeyboardFocus(ARWING);
         setPosition(Tile.WIDTH_IN_PIXELS / 2f, Tile.HEIGHT_IN_PIXELS / 2f);
     }
 
@@ -59,6 +61,4 @@ public class World<S extends Ship> extends Group
         }
         return null;
     }
-
-    protected abstract S createShip();
 }

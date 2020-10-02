@@ -38,4 +38,9 @@ public class Body extends Tile
         areaToTake.addActor(this);
         area = areaToTake;
     }
+
+    public Area giveArea()
+    {
+        return area;
+    }
 }

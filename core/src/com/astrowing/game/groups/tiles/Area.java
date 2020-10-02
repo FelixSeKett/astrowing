@@ -12,15 +12,15 @@ public class Area extends Tile
     // FIELDS
     // =====================================================
 
-    public final World<?> WORLD;
-    public final int      COLUMN;
-    public final int      ROW;
+    public final World WORLD;
+    public final int   COLUMN;
+    public final int   ROW;
 
     // =====================================================
     // CONSTRUCTORS
     // =====================================================
 
-    public Area(World<?> world, int column, int row)
+    public Area(World world, int column, int row)
     {
         super(column, row, 0, 0);
         WORLD  = world;

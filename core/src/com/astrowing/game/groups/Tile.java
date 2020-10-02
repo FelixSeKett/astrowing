@@ -10,9 +10,9 @@ public class Tile extends Group
     // FIELDS
     // =====================================================
 
-    public static final int     WIDTH_IN_PIXELS = 16;
-    public static final int     HEIGHT_IN_PIXELS = 16;
-    protected final     Sprite  SPRITE;
+    public static final int    WIDTH_IN_PIXELS  = 16;
+    public static final int    HEIGHT_IN_PIXELS = 16;
+    private final       Sprite SPRITE;
 
     // =====================================================
     // CONSTRUCTORS
@@ -26,8 +26,8 @@ public class Tile extends Group
     public Tile(int column, int row, int textureRegionColumn, int textureRegionRow)
     {
         SPRITE = new Sprite(World.TEXTURE,
-                                 textureRegionColumn * WIDTH_IN_PIXELS,
-                                 textureRegionRow * HEIGHT_IN_PIXELS,
+                            textureRegionColumn * WIDTH_IN_PIXELS,
+                            textureRegionRow * HEIGHT_IN_PIXELS,
                             WIDTH_IN_PIXELS,
                             HEIGHT_IN_PIXELS);
         setBounds(column * WIDTH_IN_PIXELS, row * HEIGHT_IN_PIXELS, WIDTH_IN_PIXELS, HEIGHT_IN_PIXELS);
