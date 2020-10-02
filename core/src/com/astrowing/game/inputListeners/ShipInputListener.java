@@ -32,16 +32,8 @@ public class ShipInputListener extends InputListener
     {
         Direction direction = Direction.giveDirection(keycode);
         if (direction != null) {
-            Area area         = SHIP.giveArea();
-            Area areaToMoveTo = area.WORLD.giveArea(area, direction);
-            if (areaToMoveTo != null) {
-                SHIP.moveToArea(areaToMoveTo, direction);
-            }
+            SHIP.moveInDirection(direction);
         } else if (keycode == Input.Keys.SPACE) {
-            SHIP.putProbe();
-        } else if (keycode == Input.Keys.BACKSPACE) {
-            SHIP.pickProbe();
-        } else if (keycode == Input.Keys.B) {
             SHIP.broadcast();
         }
         return true;

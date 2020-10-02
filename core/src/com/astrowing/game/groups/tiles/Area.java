@@ -1,10 +1,10 @@
 package com.astrowing.game.groups.tiles;
 
+import com.astrowing.game.groups.tiles.bodies.BlackHole;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.astrowing.game.groups.World;
 import com.astrowing.game.groups.Tile;
 import com.astrowing.game.groups.tiles.bodies.Asteroid;
-import com.astrowing.game.groups.tiles.bodies.Probe;
 
 public class Area extends Tile
 {
@@ -32,17 +32,12 @@ public class Area extends Tile
     // METHODS
     // =====================================================
 
-    public boolean hasProbe()
+    public boolean isBlocked()
     {
-        for (Actor actor : getChildren()) {
-            if (actor instanceof Probe) {
-                return true;
-            }
-        }
-        return false;
+        return hasAsteroid() || hasBlackHole();
     }
 
-    public boolean isBlocked()
+    public boolean hasAsteroid()
     {
         for (Actor actor : getChildren()) {
             if (actor instanceof Asteroid) {
@@ -52,18 +47,13 @@ public class Area extends Tile
         return false;
     }
 
-    public void addProbe()
-    {
-        new Probe(this);
-    }
-
-    public void removeProbe()
+    public boolean hasBlackHole()
     {
         for (Actor actor : getChildren()) {
-            if (actor instanceof Probe) {
-                actor.remove();
-                return;
+            if (actor instanceof BlackHole) {
+                return true;
             }
         }
+        return false;
     }
 }

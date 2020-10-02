@@ -5,7 +5,6 @@ import com.astrowing.game.groups.tiles.Area;
 import com.astrowing.game.groups.tiles.Body;
 import com.astrowing.game.inputListeners.ShipInputListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction;
 
 public class Ship extends Body
 {
@@ -19,9 +18,9 @@ public class Ship extends Body
     // CONSTRUCTORS
     // =====================================================
 
-    public Ship(Area area)
+    public Ship(int textureRegionColumn, int textureRegionRow, Area area)
     {
-        super(0, 1, area);
+        super(textureRegionColumn, textureRegionRow, area);
         takeSightDirection(Direction.UP);
         ShipInputListener shipInputListener = new ShipInputListener(this);
         addListener(shipInputListener);
@@ -31,13 +30,13 @@ public class Ship extends Body
     // METHODS
     // =====================================================
 
-    public void moveToArea(Area areaToMoveTo, Direction sightDirectionToTake)
+    public void moveInDirection(Direction directionToMoveIn)
     {
-        takeSightDirection(sightDirectionToTake);
-        moveToArea(areaToMoveTo);
+        takeSightDirection(directionToMoveIn);
+        move();
     }
 
-    private void takeSightDirection(Direction sightDirectionToTake)
+    public void takeSightDirection(Direction sightDirectionToTake)
     {
         if (sightDirectionToTake != null) {
             sightDirection = sightDirectionToTake;
@@ -47,14 +46,16 @@ public class Ship extends Body
 
     public void move()
     {
-        Area newArea = area.WORLD.giveArea(area, sightDirection);
-        moveToArea(newArea);
+        Area areaToMoveTo = area.WORLD.giveArea(area, sightDirection);
+        if (canMoveToArea(areaToMoveTo)) {
+            takeArea(areaToMoveTo);
+            didMove();
+        }
     }
 
-    public void turnLeft()
+    protected boolean canMoveToArea(Area areaToMoveTo)
     {
-        Direction newSightDirection = sightDirection.giveNextDirectionClockwise();
-        takeSightDirection(newSightDirection);
+        return areaToMoveTo != null && !areaToMoveTo.isBlocked();
     }
 
     public void broadcast()
@@ -62,37 +63,26 @@ public class Ship extends Body
         broadcast("");
     }
 
-    public void broadcast(final String STRING)
+    public void broadcast(Object object)
     {
         String name     = toString();
+        String message  = object.toString();
         String position = area.COLUMN + "-" + area.ROW;
-        Gdx.app.log(name + " at " + position, STRING);
+        Gdx.app.log(name + " at " + position, message);
+        didBroadcast(object);
     }
 
-    public void putProbe()
+    protected boolean canBroadcast(Object object)
     {
-        area.addProbe();
+        return true;
     }
 
-    public void pickProbe()
+    protected void didMove()
     {
-        area.removeProbe();
     }
 
-    public boolean canMove()
+    protected void didBroadcast(Object object)
     {
-        Area newFloor = area.WORLD.giveArea(area, sightDirection);
-        return newFloor != null;
-    }
 
-    public boolean passesProbe()
-    {
-        return area.hasProbe();
-    }
-
-    public boolean detectsAsteroid()
-    {
-        Area frontArea = area.WORLD.giveArea(area, sightDirection);
-        return frontArea.isBlocked();
     }
 }
