@@ -1,7 +1,6 @@
 package com.astrowing.game.inputListeners;
 
 import com.astrowing.game.Direction;
-import com.astrowing.game.groups.tiles.Area;
 import com.astrowing.game.groups.tiles.bodies.Ship;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;

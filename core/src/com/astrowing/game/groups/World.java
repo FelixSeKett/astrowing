@@ -1,7 +1,9 @@
 package com.astrowing.game.groups;
 
 import com.astrowing.game.Map;
+import com.astrowing.game.groups.tiles.bodies.Satellite;
 import com.astrowing.game.groups.tiles.bodies.ships.Arwing;
+import com.astrowing.game.groups.tiles.bodies.ships.Xwing;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.astrowing.game.Direction;
@@ -38,6 +40,7 @@ public class World extends Group
             }
         }
         ARWING = new Arwing(AREAS[3][3]);
+        new Satellite(AREAS[2][4]);
         map.createAsteroids(AREAS);
         stage.setKeyboardFocus(ARWING);
         setPosition(Tile.WIDTH_IN_PIXELS / 2f, Tile.HEIGHT_IN_PIXELS / 2f);

@@ -79,6 +79,7 @@ public class Ship extends Body
 
     protected void didMove()
     {
+
     }
 
     protected void didBroadcast(Object object)

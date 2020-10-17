@@ -1,6 +1,7 @@
 package com.astrowing.game.groups.tiles;
 
 import com.astrowing.game.groups.tiles.bodies.BlackHole;
+import com.astrowing.game.groups.tiles.bodies.Satellite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.astrowing.game.groups.World;
 import com.astrowing.game.groups.Tile;
@@ -51,6 +52,17 @@ public class Area extends Tile
     {
         for (Actor actor : getChildren()) {
             if (actor instanceof BlackHole) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasSatellite()
+    {
+        // For-Each-Schleife
+        for (Actor actor : getChildren()) {
+            if (actor instanceof Satellite) {
                 return true;
             }
         }

@@ -1,28 +1,32 @@
-package com.astrowing.game.groups.tiles.bodies;
+package com.astrowing.game.groups.tiles.bodies.ships;
 
 import com.astrowing.game.groups.tiles.Area;
-import com.astrowing.game.groups.tiles.Body;
+import com.astrowing.game.groups.tiles.bodies.Ship;
 
-public class Satellite extends Body
+public class Xwing extends Ship
 {
     // =====================================================
     // FIELDS
     // =====================================================
 
-    //nothing
+    // nothing
 
     // =====================================================
     // CONSTRUCTORS
     // =====================================================
 
-    public Satellite(Area area)
+    public Xwing(Area area)
     {
-        super(3, 0, area);
+        super(1, 1, area);
     }
 
     // =====================================================
     // METHODS
     // =====================================================
 
-    // nothing
+    @Override protected void didMove()
+    {
+        super.didMove(); // Wichtig!
+        broadcast();
+    }
 }
