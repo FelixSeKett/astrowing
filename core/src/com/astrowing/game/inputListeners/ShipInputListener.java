@@ -34,6 +34,8 @@ public class ShipInputListener extends InputListener
             SHIP.moveInDirection(direction);
         } else if (keycode == Input.Keys.SPACE) {
             SHIP.broadcast();
+        } else if (keycode == Input.Keys.ENTER) {
+            SHIP.sendScout();
         }
         return true;
     }

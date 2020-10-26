@@ -1,6 +1,7 @@
 package com.astrowing.game.groups;
 
 import com.astrowing.game.Map;
+import com.astrowing.game.groups.tiles.bodies.BlackHole;
 import com.astrowing.game.groups.tiles.bodies.Satellite;
 import com.astrowing.game.groups.tiles.bodies.ships.Arwing;
 import com.astrowing.game.groups.tiles.bodies.ships.Xwing;
@@ -41,6 +42,7 @@ public class World extends Group
         }
         ARWING = new Arwing(AREAS[3][3]);
         new Satellite(AREAS[2][4]);
+        new BlackHole(AREAS[4][1]);
         map.createAsteroids(AREAS);
         stage.setKeyboardFocus(ARWING);
         setPosition(Tile.WIDTH_IN_PIXELS / 2f, Tile.HEIGHT_IN_PIXELS / 2f);

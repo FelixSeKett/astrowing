@@ -3,6 +3,7 @@ package com.astrowing.game.groups.tiles.bodies;
 import com.astrowing.game.Direction;
 import com.astrowing.game.groups.tiles.Area;
 import com.astrowing.game.groups.tiles.Body;
+import com.astrowing.game.groups.tiles.bodies.ships.Scout;
 import com.astrowing.game.inputListeners.ShipInputListener;
 import com.badlogic.gdx.Gdx;
 
@@ -85,5 +86,10 @@ public class Ship extends Body
     protected void didBroadcast(Object object)
     {
 
+    }
+
+    public void sendScout()
+    {
+        Scout scout = new Scout(area);
     }
 }
