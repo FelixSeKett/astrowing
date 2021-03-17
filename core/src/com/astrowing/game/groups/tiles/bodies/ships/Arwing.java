@@ -25,6 +25,7 @@ public class Arwing extends Ship
         pilots    = new Pilot[4]; // Initialisierung eines Arrays vom Datentyp Pilot
         pilots[0] = new Pilot("Fox", "McCloud"); // Initialisierung eines Pilots und Zuweisung zu einem Array-Slot
         pilots[1] = new Pilot("Peppy", "Hare");
+        pilots[2] = new Pilot("Homer", "Simpson");
     }
 
     // =====================================================
@@ -74,5 +75,19 @@ public class Arwing extends Ship
     {
         super.didBroadcast(object);
 
+    }
+
+    @Override public void broadcast(Object object)
+    {
+        super.broadcast(object);
+        if (pilots[2] == null) {
+            System.out.println("Pilot nicht gesetzt.");
+        } else {
+            String fullName = pilots[2].giveFullName();
+            System.out.println("Pilot auf Slot 2: " + fullName);
+        }
+
+        Pilot pilot = null;
+        System.out.println(pilot);
     }
 }

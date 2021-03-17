@@ -1,5 +1,6 @@
 package com.astrowing.game;
 
+import com.astrowing.game.groups.tiles.bodies.Ship;
 import com.astrowing.game.groups.tiles.bodies.ships.Arwing;
 
 public class FuelTank
@@ -47,7 +48,8 @@ public class FuelTank
         // fuel = fuel - 1;
         // fuel -= 1;
 
-        ARWING.broadcast("Gegenwärtiger Treibstoff: " + fuel);
+        String fuelMessage = "Gegenwärtiger Treibstoff: " + fuel;
+        ARWING.broadcast(fuelMessage);
     }
 
     public void refill()

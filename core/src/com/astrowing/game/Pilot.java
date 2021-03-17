@@ -23,5 +23,19 @@ public class Pilot
     // METHODS
     // =====================================================
 
+    // Getter-Methode
+    public String giveFirstName()
+    {
+        return firstName;
+    }
 
+    public String giveLastName()
+    {
+        return lastName;
+    }
+
+    public String giveFullName()
+    {
+        return firstName + " " + lastName;
+    }
 }

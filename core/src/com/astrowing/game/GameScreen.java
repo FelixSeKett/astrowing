@@ -21,8 +21,8 @@ public class GameScreen implements Screen
     public static final  int      WIDTH_IN_PIXELS  = WIDTH_IN_TILES * Tile.WIDTH_IN_PIXELS;
     public static final  int      HEIGHT_IN_PIXELS = HEIGHT_IN_TILES * Tile.HEIGHT_IN_PIXELS;
     private final        Stage    STAGE;
-    private final        World    WORLD;
     private final        Viewport VIEWPORT;
+    private final        World    WORLD;
 
     // =====================================================
     // CONSTRUCTORS
